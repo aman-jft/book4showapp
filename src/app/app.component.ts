@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AddMovieTheatreComponent } from './components/movie-theatre/add-movie-theatre/add-movie-theatre.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AddMovieComponent } from './components/movie/add-movie/add-movie.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bookurshowapp';
+  constructor(public dialog: MatDialog) {}
+  addMovieTheatre(): void {
+    const dialogRef = this.dialog.open(AddMovieTheatreComponent, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     // this.animal = result;
+    });
+  }
+
+  addMovie(): void {
+    const dialogRef = this.dialog.open(AddMovieComponent, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     // this.animal = result;
+    });
+  }
 }

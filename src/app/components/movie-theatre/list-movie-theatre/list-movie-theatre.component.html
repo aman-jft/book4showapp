@@ -1,0 +1,13 @@
+<mat-list>
+    <mat-list-item class="theatre-list" *ngFor="let theatre of movieTheatres">
+        <div style="width:80%;">
+        <span style="font-size:22px" matLine><b>{{theatre.name}}</b></span>
+        <span matLine> {{theatre.address}}</span>
+        </div>
+        <p class="action-icon">
+            <mat-icon matTooltip="Add Schedule" matListIcon (click)="addSchedule(theatre.id)">add</mat-icon>
+            <mat-icon matTooltip="Edit Theatre" matListIcon (click)="editTheatre(theatre.id)">edit</mat-icon>
+            <mat-icon matTooltip="Delete Theatre" matListIcon (click)="deleteTheatre(theatre.id)">delete</mat-icon>
+        </p>
+    </mat-list-item>
+</mat-list>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Add Movie Theatre</h1>
+<div mat-dialog-content class="example-container">
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="movieTheatre.name" placeholder="Movie Theatre Name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="number" min="10" max="50" matInput [(ngModel)]="movieTheatre.seatCount" placeholder="Total Seats Available" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput [(ngModel)]="movieTheatre.address" placeholder="Address"></textarea>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="addMovieTheatre()">Add</button>
+</div>

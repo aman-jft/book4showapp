@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Add Movie</h1>
+<div mat-dialog-content class="example-container">
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="movie.name" placeholder="Movie Name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="time" matInput [(ngModel)]="movie.duration" placeholder="Duration" required>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="addMovie()">Add</button>
+</div>

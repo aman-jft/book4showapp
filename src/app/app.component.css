@@ -1,0 +1,19 @@
+ /* values of properties of animation assigned */
+ 
+ .banner_name {}
+ 
+ .neon-header {
+     animation: neon 1s ease-in-out infinite alternate;
+ }
+ /* various colour combinations used to create 
+ neon effect */
+ 
+ @keyframes neon {
+     from {
+         text-shadow: 0 0 35px #85FF64, 0 0 40px #2BBF03, 0 0 55px #141ae2;
+     }
+ }
+ 
+ .filler {
+     flex: 1 1 auto;
+ }

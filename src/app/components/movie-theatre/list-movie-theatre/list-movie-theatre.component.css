@@ -1,0 +1,9 @@
+.action-icon {
+    justify-content: flex-end;
+    margin: 0 0 0 auto;
+}
+
+.theatre-list {
+    background-color: #eeeeff;
+    margin: 5px;
+}
