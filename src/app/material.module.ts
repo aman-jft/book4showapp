@@ -22,6 +22,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
@@ -64,6 +65,7 @@ import {MatTreeModule} from '@angular/material/tree';
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatFormFieldModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,

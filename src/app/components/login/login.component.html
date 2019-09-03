@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content class="example-container">
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="user.username" placeholder="Username" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="user.password" placeholder="Password" required>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+</div>

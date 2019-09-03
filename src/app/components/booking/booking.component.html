@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Book Movie</h1>
+<div mat-dialog-content class="example-container">
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="booking.seatCount" placeholder="Total seats" required>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="addBooking()">Add</button>
+</div>

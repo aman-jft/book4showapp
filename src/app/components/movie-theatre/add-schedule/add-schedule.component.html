@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Schedule Movie : {{movieTheatre.name}} </h1>
+<div mat-dialog-content class="example-container">
+
+    <mat-form-field>
+        <mat-label>Select Movie</mat-label>
+        <mat-select [(ngModel)]="movieSchedule.movie">
+            <mat-option *ngFor="let movie of movies" [value]="movie.id">
+                {{movie.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Select Time Slot</mat-label>
+        <mat-select [(ngModel)]="movieSchedule.timeSlot">
+            <mat-option value="0">Morning</mat-option>
+            <mat-option value="1">Afternoon</mat-option>
+            <mat-option value="2">Evening</mat-option>
+            <mat-option value="3">Night</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="date" matInput [(ngModel)]="movieSchedule.from" placeholder="Screening from" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="date" matInput [(ngModel)]="movieSchedule.to" placeholder="Screening Upto" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="movieSchedule.price" placeholder="Price" required>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="addSchedule()">Add</button>
+</div>

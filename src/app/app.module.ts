@@ -16,17 +16,25 @@ import { AddMovieComponent } from './components/movie/add-movie/add-movie.compon
 import { DisplayMovieComponent } from './components/movie/display-movie/display-movie.component';
 
 import {MovieService} from './service/movie.service';
-
+import { AddScheduleComponent } from './components/movie-theatre/add-schedule/add-schedule.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from 'src/app/service/auth.service';
+import { CustomInterceptor } from 'src/app/service/custom.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BookingComponent } from './components/booking/booking.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListMovieTheatreComponent,
     AddMovieTheatreComponent,
     AddMovieComponent,
-    DisplayMovieComponent
+    DisplayMovieComponent,
+    AddScheduleComponent,
+    LoginComponent,
+    BookingComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -35,8 +43,17 @@ import {MovieService} from './service/movie.service';
     MatNativeDateModule,
     ReactiveFormsModule,
   ],
-  entryComponents: [AddMovieTheatreComponent,AddMovieComponent],
-  providers: [MovieService],
+  entryComponents: [
+    AddMovieTheatreComponent,
+    AddMovieComponent,
+    AddScheduleComponent,
+    LoginComponent,
+    BookingComponent],
+  providers: [MovieService, AuthService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomInterceptor ,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

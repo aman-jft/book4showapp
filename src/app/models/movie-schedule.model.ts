@@ -2,6 +2,8 @@
 export class MovieSchedule {
     id:number;
     movieTheatreId: number;
+    movieTheatreName: string;
+    movieTheatreAddress:string;
     movie: number;
     movieName: string;
     movieDuration: string;

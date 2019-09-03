@@ -1,13 +1,59 @@
-<mat-list>
-    <mat-list-item class="theatre-list" *ngFor="let theatre of movieTheatres">
-        <div style="width:80%;">
-        <span style="font-size:22px" matLine><b>{{theatre.name}}</b></span>
-        <span matLine> {{theatre.address}}</span>
+<div class="example-container" align="center">
+    <mat-icon style="margin-right: 10px" matTooltip="Yesterday" (click)="decrement()">keyboard_arrow_left</mat-icon>
+    <h2>{{selectedDate.toDateString()}}</h2>
+    <mat-icon style="margin-left: 10px" matTooltip="Tomorrow" (click)="increment()">keyboard_arrow_right</mat-icon>
+</div>
+<mat-accordion [multi]="true" hideToggle>
+    <mat-expansion-panel *ngFor="let map of data | keyvalue" [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <span style="font-size:22px"><b>{{map.key.name}}</b></span>
+
+            </mat-panel-title>
+            <mat-panel-description>
+                <p class="action-icon" *ngIf="isAdmin">
+                    <mat-icon style="margin-right: 5px" matTooltip="Add Schedule" matListIcon
+                        (click)="addSchedule(map.key.id)">add</mat-icon>
+                    <mat-icon style="margin-right: 5px" matTooltip="Edit Theatre" matListIcon
+                        (click)="editTheatre(map.key.id)">edit</mat-icon>
+                    <mat-icon style="margin-right: 5px" matTooltip="Delete Theatre" matListIcon
+                        (click)="deleteTheatre(map.key.id)">delete
+                    </mat-icon>
+                </p>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        {{map.key.address}}
+        <mat-grid-list *ngIf="map.value.length>0" cols="4" rowWidth="300px" rowHeight="300px">
+            <mat-grid-tile *ngFor="let movieSchedule of map.value">
+                <!-- <display-movie [movieSchedule]="movieSchedule"></display-movie> -->
+
+
+                <div class="timeslot">
+                    <!-- <button mat-raised-button color="primary">{{movieSchedule.timeSlot}}</button> -->
+                    <p><span>{{movieSchedule.timeSlot}}</span></p>
+                </div>
+                <div class="plate">
+                    <!--  <p class="script"><span>{{movieSchedule.timeSlot}}</span></p> -->
+
+                    <p [ngClass]="{'shadow':true, 'text1':word.length%3==0, 'text2':word.length%3==1, 'text3':word.length%3==2}"
+                        *ngFor="let word of movieSchedule.movieName.split(' ')">{{word}}</p>
+                    <!-- <p class="script" *ngFor="let word of movieSchedule.movieName.split(' ')"><span>{{word}}</span></p> -->
+
+                </div>
+                <div class="bookNow" *ngIf="isLoggedIn">
+                    <button mat-raised-button color="primary" (click)="addBooking(movieSchedule.id)">Book Now</button>
+                </div>
+
+
+
+
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div align="center" *ngIf="map.value.length==0">
+            <marquee width="40%">
+                <h3>No Movies yet. Stay tuned!!!</h3>
+            </marquee>
         </div>
-        <p class="action-icon">
-            <mat-icon matTooltip="Add Schedule" matListIcon (click)="addSchedule(theatre.id)">add</mat-icon>
-            <mat-icon matTooltip="Edit Theatre" matListIcon (click)="editTheatre(theatre.id)">edit</mat-icon>
-            <mat-icon matTooltip="Delete Theatre" matListIcon (click)="deleteTheatre(theatre.id)">delete</mat-icon>
-        </p>
-    </mat-list-item>
-</mat-list>
+    </mat-expansion-panel>
+
+</mat-accordion>

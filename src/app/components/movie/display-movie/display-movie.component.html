@@ -1,3 +1,16 @@
-<p>
-  display-movie works!
-</p>
+<div class="timeslot">
+    <!-- <button mat-raised-button color="primary">{{movieSchedule.timeSlot}}</button> -->
+    <p><span>{{movieSchedule.timeSlot}}</span></p>
+</div>
+<div class="plate">
+   <!--  <p class="script"><span>{{movieSchedule.timeSlot}}</span></p> -->
+    
+    <p [ngClass]="{'shadow':true, 'text1':word.length%3==0, 'text2':word.length%3==1, 'text3':word.length%3==2}" *ngFor="let word of movieSchedule.movieName.split(' ')">{{word}}</p>
+    <!-- <p class="script" *ngFor="let word of movieSchedule.movieName.split(' ')"><span>{{word}}</span></p> -->
+    
+</div>
+<div class="bookNow">
+    <button mat-raised-button color="primary">Book Now</button>
+</div>
+
+
