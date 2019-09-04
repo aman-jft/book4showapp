@@ -9,15 +9,15 @@ import { Booking } from 'src/app/models/booking.model';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  movieScheduleId:number;
   booking:Booking;
   constructor(public dialogRef: MatDialogRef<BookingComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private movieService: MovieService) {
-      this.movieScheduleId = this.data['movieScheduleId'];
     this.dialogRef.disableClose = true;
     this.booking = new Booking();
-    this.booking.movieScheduleId = this.movieScheduleId;
+    this.booking.movieScheduleId = this.data['movieScheduleId'];
+    let date = this.movieService.parseDate(this.data['bookingDate']);
+    this.booking.bookingDate =  date;
   }
 
   onNoClick(): void {

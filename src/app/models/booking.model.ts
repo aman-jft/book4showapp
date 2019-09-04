@@ -3,4 +3,5 @@ export class Booking {
     userId:number;
     movieScheduleId:number;
     seatCount:number;
+    bookingDate: string;
 }

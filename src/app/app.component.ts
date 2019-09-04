@@ -60,6 +60,8 @@ export class AppComponent {
 
   logout(){
     this.authService.logout();
-    this.movieService.logout();
+    this.movieService.logout().subscribe(result =>{
+      console.log(result);
+    });
   }
 }

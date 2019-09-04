@@ -115,7 +115,7 @@ export class ListMovieTheatreComponent implements OnInit {
     const dialogRef = this.dialog.open(BookingComponent, {
       width: '450px',
       //height: '700px',
-      data: { movieScheduleId: movieScheduleId }
+      data: { movieScheduleId: movieScheduleId, bookingDate: this.selectedDate}
     });
 
     dialogRef.afterClosed().subscribe(result => {
