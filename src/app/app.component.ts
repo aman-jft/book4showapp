@@ -14,6 +14,7 @@ import { MovieService } from 'src/app/service/movie.service';
 export class AppComponent {
   isLoggedIn:boolean;
   isAdmin:boolean;
+  displayList:boolean=false;
   constructor(public dialog: MatDialog,
     private authService: AuthService,
     private movieService:MovieService) {
@@ -45,6 +46,15 @@ export class AppComponent {
       console.log('The dialog was closed');
      // this.animal = result;
     });
+  }
+
+  scheduleList(): void {
+    this.displayList=true;
+  }
+
+  
+  display(): void {
+    this.displayList=false;
   }
 
   login():void {

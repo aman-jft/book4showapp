@@ -22,6 +22,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { CustomInterceptor } from 'src/app/service/custom.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookingComponent } from './components/booking/booking.component';
+import { ListScheduleComponent } from './components/list-schedule/list-schedule.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { BookingComponent } from './components/booking/booking.component';
     DisplayMovieComponent,
     AddScheduleComponent,
     LoginComponent,
-    BookingComponent
+    BookingComponent,
+    ListScheduleComponent
   ],
   imports: [
   BrowserModule,

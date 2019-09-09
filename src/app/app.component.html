@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
-    <span class="banner_name"><h2>book4show</h2></span>
+    <span class="banner_name" (click)="display()"><h2>book4show</h2></span>
 
     <span class="filler"></span>
     
@@ -12,8 +12,10 @@
     <mat-menu #menu="matMenu">
         <button mat-menu-item *ngIf="isAdmin"  (click)="addMovieTheatre()"><mat-icon>add</mat-icon>New Movie Theatre</button>
         <button mat-menu-item *ngIf="isAdmin"  (click)="addMovie()"><mat-icon>add</mat-icon>New Movie</button>
+        <button mat-menu-item *ngIf="isAdmin"  (click)="scheduleList()"><mat-icon>list</mat-icon>Schedule List</button>
         <button mat-menu-item (click)="logout()"><mat-icon>power_settings_new</mat-icon>Logout</button>
     </mat-menu>
 </mat-toolbar>
-<list-movie-theatre></list-movie-theatre>
+<list-movie-theatre *ngIf="!displayList"></list-movie-theatre>
+<list-schedule *ngIf="displayList"></list-schedule>
 <router-outlet></router-outlet>
