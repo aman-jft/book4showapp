@@ -14,7 +14,7 @@ export class AuthService {
     sessionStorage.setItem( "session", user );
     if(user && user['authorities'] && user['authorities'].length>0) {
       this._status.next(true);
-      if(user['authorities'].find(item => item.authority=='ROLE_ADMIN')){
+      if(user['authorities'].find(item => item.authority=='ADMIN')){
         this._admin.next(true);
       }
     }

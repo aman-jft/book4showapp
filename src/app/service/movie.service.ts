@@ -24,6 +24,20 @@ export class MovieService {
     )
   }
 
+  public updateMovieTheatre(movieTheatre: MovieTheatre): Observable<any> {
+    return this.http.post(this.API_URL + 'movietheatre/update', movieTheatre, { 'withCredentials': true }).pipe(
+      retry(0),
+      catchError(this.handleError)
+    )
+  }
+
+  public deleteMovieTheatre(id: number): Observable<any> {
+    return this.http.get(this.API_URL + 'movietheatre/delete/'+id, { 'withCredentials': true }).pipe(
+      retry(0),
+      catchError(this.handleError)
+    )
+  }
+
   public listMovieTheatres(): Observable<any> {
     return this.http.get(this.API_URL + 'movietheatre/list').pipe(
       retry(0),

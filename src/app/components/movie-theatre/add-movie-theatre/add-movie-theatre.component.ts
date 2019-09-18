@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovieService } from 'src/app/service/movie.service';
 import { MovieTheatre } from 'src/app/models/movie-theatre.model';
 
@@ -11,9 +11,9 @@ import { MovieTheatre } from 'src/app/models/movie-theatre.model';
 export class AddMovieTheatreComponent implements OnInit {
   movieTheatre: any;
   constructor(private dialogRef: MatDialogRef<AddMovieTheatreComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private movieService: MovieService) {
     this.dialogRef.disableClose = true;
-    this.movieTheatre = new MovieTheatre();
   }
 
   onNoClick(): void {
@@ -21,13 +21,24 @@ export class AddMovieTheatreComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.data && this.data['movieTheatre']) {
+      this.movieTheatre = this.data['movieTheatre'];
+    } else {
+      this.movieTheatre = new MovieTheatre();
+    }
   }
 
   addMovieTheatre() {
-    this.movieService.addMovieTheatre(this.movieTheatre).subscribe(result => {
-      console.log(result);
-      this.dialogRef.close();
-    })
+    if (this.movieTheatre['id']) {
+      this.movieService.updateMovieTheatre(this.movieTheatre).subscribe(result => {
+        console.log(result);
+        this.dialogRef.close();
+      });
+    } else {
+      this.movieService.addMovieTheatre(this.movieTheatre).subscribe(result => {
+        console.log(result);
+        this.dialogRef.close();
+      });
+    }
   }
-
 }

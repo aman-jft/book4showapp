@@ -23,6 +23,8 @@ import { CustomInterceptor } from 'src/app/service/custom.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookingComponent } from './components/booking/booking.component';
 import { ListScheduleComponent } from './components/list-schedule/list-schedule.component';
+import { DeleteComponent } from './components/movie-theatre/delete/delete.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { ListScheduleComponent } from './components/list-schedule/list-schedule.
     AddScheduleComponent,
     LoginComponent,
     BookingComponent,
-    ListScheduleComponent
+    ListScheduleComponent,
+    DeleteComponent
   ],
   imports: [
   BrowserModule,
@@ -50,7 +53,8 @@ import { ListScheduleComponent } from './components/list-schedule/list-schedule.
     AddMovieComponent,
     AddScheduleComponent,
     LoginComponent,
-    BookingComponent],
+    BookingComponent,
+    DeleteComponent],
   providers: [MovieService, AuthService,{
     provide: HTTP_INTERCEPTORS,
     useClass: CustomInterceptor ,

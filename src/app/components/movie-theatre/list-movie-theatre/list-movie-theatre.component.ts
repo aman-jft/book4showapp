@@ -6,6 +6,8 @@ import { AddScheduleComponent } from './../add-schedule/add-schedule.component';
 import { MovieSchedule } from 'src/app/models/movie-schedule.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { BookingComponent } from './../../booking/booking.component';
+import { AddMovieTheatreComponent } from './../add-movie-theatre/add-movie-theatre.component';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'list-movie-theatre',
@@ -69,8 +71,11 @@ export class ListMovieTheatreComponent implements OnInit {
           console.debug(item['movieTheatre'] + ' - ' + theatre.id);
           return item['movieTheatre'] == theatre.id;
         });
-
-        temp.push([theatre, list]);
+        if(theatre.deleted && (!list || list.length<1)){
+          console.log("Theatre deleted : " + theatre.name);
+        } else {
+          temp.push([theatre, list]);
+        } 
       }
 
       let temp3 = temp.sort(function (x, y) {
@@ -104,11 +109,28 @@ export class ListMovieTheatreComponent implements OnInit {
   }
 
   editTheatre(movieTheatreId) {
+    let movieTheatre = this.movieTheatres.find(item => item['id']==movieTheatreId);
+    const dialogRef = this.dialog.open(AddMovieTheatreComponent, {
+      width: '350px',
+      data: { movieTheatre: movieTheatre}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     // this.animal = result;
+    });
   }
 
   deleteTheatre(movieTheatreId) {
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      width: '250px',
+      data: { movieTheatreId: movieTheatreId}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     // this.animal = result;
+    });
   }
 
   addBooking(movieScheduleId) {

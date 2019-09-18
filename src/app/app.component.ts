@@ -5,6 +5,7 @@ import { AddMovieComponent } from './components/movie/add-movie/add-movie.compon
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from 'src/app/service/auth.service';
 import { MovieService } from 'src/app/service/movie.service';
+//import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -73,5 +74,7 @@ export class AppComponent {
     this.movieService.logout().subscribe(result =>{
       console.log(result);
     });
+    //this.cookieService.delete('JSESSIONID');
+    //this.cookieService.deleteAll('/');
   }
 }

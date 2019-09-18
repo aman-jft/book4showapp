@@ -3,8 +3,8 @@
     <h2>{{selectedDate.toDateString()}}</h2>
     <mat-icon style="margin-left: 10px" matTooltip="Tomorrow" (click)="increment()">keyboard_arrow_right</mat-icon>
 </div>
-<mat-accordion [multi]="true" hideToggle>
-    <mat-expansion-panel *ngFor="let map of data | keyvalue" [expanded]="true">
+<mat-accordion [multi]="true" hideToggle >
+    <mat-expansion-panel *ngFor="let map of data | keyvalue" [expanded]="true" [disabled]="true">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 <span style="font-size:22px"><b>{{map.key.name}}</b></span>
