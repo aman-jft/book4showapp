@@ -14,7 +14,7 @@ import { Booking } from 'src/app/models/booking.model';
 @Injectable()
 export class MovieService {
 
-  private API_URL: string = 'http://localhost:8080/book4show/';
+  private API_URL: string = 'https://javatechnofans.herokuapp.com/book4show/';
   constructor(private http: HttpClient) { }
 
   public addMovieTheatre(movieTheatre: MovieTheatre): Observable<any> {
